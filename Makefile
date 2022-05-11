@@ -6,7 +6,7 @@
 #    By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/11 18:58:56 by mcourtoi          #+#    #+#              #
-#    Updated: 2022/05/12 01:34:27 by mcourtoi         ###   ########.fr        #
+#    Updated: 2022/05/12 01:49:17 by mcourtoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ NAMECLIENT = client
 
 CC = gcc
 
-SRCSSERVER = srcs_server/server.c utils/utils.c 
+SRCSSERVER = srcs_server/server.c utils/utils.c \
 
-SRCSCLIENT = srcs_client/client.c utils/utils.c
+SRCSCLIENT = srcs_client/client.c utils/utils.c 
 
 OBJSCLIENT = ${SRCSCLIENT:.c=.o}
 OBJSSERVER = ${SRCSSERVER:.c=.o}
@@ -30,13 +30,14 @@ FLAGS = -Wall -Wextra -Werror
 .c.o:
 	${CC} ${FLAGS} -I${INC} -c $< -o ${<:.c=.o}
 
+all:    ${NAMESERVER}  ${NAMECLIENT}
+
 ${NAMESERVER}:    ${OBJSSERVER}
 	    ${CC} ${FLAGS} ${OBJSSERVER} -o ${NAMESERVER}
 
 ${NAMECLIENT}:	${OBJSCLIENT}
 		${CC} ${FLAGS} ${OBJSCLIENT} -o ${NAMECLIENT} 
 
-all:    ${NAMESERVER}  ${NAMECLIENT}
 
 clean:
 	rm -f ${OBJSCLIENT} ${OBJSSERVER}
