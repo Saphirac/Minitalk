@@ -6,12 +6,11 @@
 /*   By: mcourtoi <mcourtoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:04:23 by mcourtoi          #+#    #+#             */
-/*   Updated: 2022/05/12 01:27:46 by mcourtoi         ###   ########.fr       */
+/*   Updated: 2022/05/12 01:52:42 by mcourtoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
-
 
 void	ft_get_message(int signal)
 {
@@ -25,7 +24,7 @@ void	ft_get_message(int signal)
 	}
 	if (signal == SIGUSR2)
 		size--;
-	if (size == 0)
+	if (size < 0)
 	{
 		ft_putchar_fd(c, 1);
 		if (!c)
