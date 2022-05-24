@@ -40,7 +40,7 @@ int	ft_check(int ac, char **av)
 
 void	ft_error(void)
 {
-	ft_putstr_fd("Error : wrong pid\n", 2);
+	ft_putstr_fd("Error.", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -57,22 +57,20 @@ void	ft_send_message(int pid, char *msg)
 		j = 7;
 		while (j > -1)
 		{	
-			// action pour sigusr1
 			if ((msg[i] >> j) & 1)
 				if (kill(pid, SIGUSR1) < 0)
 					ft_error();
-			// action pour sigusr2
 			if (!((msg[i] >> j) & 1))
 				if (kill(pid, SIGUSR2) < 0)
 					ft_error();
 			j--;
-			usleep(500);
+			usleep(30);
 		}
 		i++;
 	}
 }
 
-int	main (int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ft_check(ac, av) == 1)
 	{

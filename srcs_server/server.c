@@ -33,7 +33,8 @@ void	ft_get_message(int signal)
 		size = 7;
 	}
 }
-int	main()
+
+int	main(void)
 {
 	ft_putstr_fd("Pid of server : ", 1);
 	ft_putnbr_fd(getpid(), 1);
